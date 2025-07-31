@@ -14,13 +14,10 @@
             overlays = [cargo2nix.overlays.default];
           };
 
-          rustPkgs = pkgs.rustBuilder.makePackageSet {
-            rustVersion = "1.61.0";
-            packageFun = import ./Cargo.nix;
-          };
+          cargo_nix = pkgs.callPackage ./Cargo.nix {};
         in rec {
           packages = {
-            asmfmt = (rustPkgs.workspace.asmfmt {}).bin;
+            asmfmt = cargo_nix.workspaceMembers.asmfmt.build;
             default = packages.asmfmt;
           };
         }
