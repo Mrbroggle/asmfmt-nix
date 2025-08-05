@@ -917,7 +917,7 @@ fn parse_decl<'a, E: ParseError<Span<'a>>>(
 fn parse_comment<'a, E: ParseError<Span<'a>>>(s: Span<'a>) -> IResult<Span<'a>, RawToken<'a>, E> {
     let (s, _) = take_whitespace(s)?;
 
-    let (s, comment) = preceded(tag(";"), take_until_eol)(s)?;
+    let (s, comment) = preceded(tag("#"), take_until_eol)(s)?;
     Ok((
         s,
         RawToken {

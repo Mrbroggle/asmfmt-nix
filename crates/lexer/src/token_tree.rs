@@ -836,7 +836,7 @@ impl Display for TopLevel<'_> {
                 }
                 if let Some(comment) = comment {
                     align_to(comment.col - 1, &mut col, f)?;
-                    write!(f, ";")?;
+                    write!(f, "#")?;
                     col += 1;
                     write_token(comment, &mut col, f)?;
                 }
@@ -877,7 +877,7 @@ impl Display for TopLevel<'_> {
 
                 if let Some(comment) = comment {
                     align_to(comment.col - 1, &mut col, f)?;
-                    write!(f, ";")?;
+                    write!(f, "#")?;
                     col += 1;
                     write_token(comment, &mut col, f)?;
                 }
